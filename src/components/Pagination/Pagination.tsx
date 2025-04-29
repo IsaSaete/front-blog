@@ -20,6 +20,7 @@ const Pagination: React.FC<PaginationProps> = ({ postsTotal, currentPage }) => {
       <NavLink
         className={`paginator__link ${firstPageClass}`}
         to={`/posts/${previousPage}`}
+        aria-label="Página anterior"
       >
         {"<"}
       </NavLink>
@@ -27,6 +28,7 @@ const Pagination: React.FC<PaginationProps> = ({ postsTotal, currentPage }) => {
       <NavLink
         className={`paginator__link ${lastPageClass}`}
         to={`/posts/${nextPage}`}
+        aria-label="Página siguiente"
       >
         {">"}
       </NavLink>

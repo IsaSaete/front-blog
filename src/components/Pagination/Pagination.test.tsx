@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 
 describe("Given the Pagination component", () => {
   describe("When it renders", () => {
-    test("Then it should show a '<' and '>' link", () => {
+    test("Then it should show a 'Página anterior' and 'Página siguiente' link", () => {
       render(
         <Pagination
           postsTotal={archivoDeLasTormentasComidaPosts.length}
@@ -14,8 +14,8 @@ describe("Given the Pagination component", () => {
         { wrapper: MemoryRouter },
       );
 
-      const previousLink = screen.getByRole("link", { name: /</i });
-      const nextLink = screen.getByRole("link", { name: />/i });
+      const previousLink = screen.getByLabelText(/página anterior/i);
+      const nextLink = screen.getByLabelText(/página siguiente/i);
 
       expect(previousLink).toBeVisible();
       expect(nextLink).toBeVisible();
