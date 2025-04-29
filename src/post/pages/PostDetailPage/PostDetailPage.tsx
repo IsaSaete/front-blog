@@ -38,7 +38,7 @@ const PostDetailPage: React.FC = () => {
           <img
             className="post-detail__image"
             src={imageUrl}
-            alt={post.imageUrl}
+            alt={post.imageAlt}
             width={100}
             height={100}
           />
