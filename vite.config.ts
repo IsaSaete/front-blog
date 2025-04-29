@@ -10,8 +10,7 @@ export default defineConfig({
     setupFiles: ["src/setupTests.ts"],
     coverage: {
       reportsDirectory: "./coverage",
-      exclude: ["main.tsx", "vite-env.d.ts", "**/types.ts"],
-      provider: "v8",
+      exclude: ["main.tsx", "vite-env.d.ts", "**/types.ts", "vite.config.ts"],
       reporter: ["text", "json", "html"],
       include: ["**/*.ts", "**/*.tsx"],
     },
