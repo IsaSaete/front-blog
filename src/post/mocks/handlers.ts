@@ -19,11 +19,15 @@ export const handlers = [
     });
   }),
 
-  http.post(`${apiUrl}/posts`, () => {
+  http.get(`${apiUrl}/posts/159678901234567890123456`, () => {
     return HttpResponse.json<PostDto>(huevosRotosBruc159PostDto);
   }),
 
-  http.get(`${apiUrl}/posts/159678901234567890123456`, () => {
+  http.delete(`${apiUrl}/posts/159678901234567890123456`, () => {
+    return HttpResponse.json<PostDto>(huevosRotosBruc159PostDto);
+  }),
+
+  http.post(`${apiUrl}/posts`, () => {
     return HttpResponse.json<PostDto>(huevosRotosBruc159PostDto);
   }),
 ];
