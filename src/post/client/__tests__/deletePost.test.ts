@@ -1,6 +1,5 @@
 import { huevosRotosBruc159PostDto } from "../../dto/fixturesDto";
 import { mapPostDtoToPost } from "../../dto/mappers";
-import { huevosRotosBruc159PostData } from "../../fixtures";
 import PostClient from "../PostClient";
 
 describe("Given the deletePost method to PostClient", () => {
@@ -8,7 +7,9 @@ describe("Given the deletePost method to PostClient", () => {
     test("Then it should return Huevos rotos de Bruc, 159 post", async () => {
       const postClient = new PostClient();
 
-      const deletedPost = await postClient.addPost(huevosRotosBruc159PostData);
+      const deletedPost = await postClient.deletePost(
+        huevosRotosBruc159PostDto._id,
+      );
 
       const postHuevos = mapPostDtoToPost(huevosRotosBruc159PostDto);
 
