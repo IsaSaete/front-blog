@@ -41,9 +41,9 @@ class PostClient implements PostClientStructure {
       throw new Error("Error adding new post");
     }
 
-    const newPostDto = (await response.json()) as PostDto;
+    const newPostDto = (await response.json()) as { post: PostDto };
 
-    const post = mapPostDtoToPost(newPostDto);
+    const post = mapPostDtoToPost(newPostDto.post);
 
     return post;
   };
@@ -58,9 +58,9 @@ class PostClient implements PostClientStructure {
       throw new Error("Error deleting post");
     }
 
-    const deletedPostDto = (await response.json()) as PostDto;
+    const deletedPostDto = (await response.json()) as { post: PostDto };
 
-    const deletePost = mapPostDtoToPost(deletedPostDto);
+    const deletePost = mapPostDtoToPost(deletedPostDto.post);
 
     return deletePost;
   };
@@ -72,9 +72,9 @@ class PostClient implements PostClientStructure {
       throw new Error("Error getting post");
     }
 
-    const postDto = (await response.json()) as PostDto;
+    const postDto = (await response.json()) as { post: PostDto };
 
-    const post = mapPostDtoToPost(postDto);
+    const post = mapPostDtoToPost(postDto.post);
 
     return post;
   };
