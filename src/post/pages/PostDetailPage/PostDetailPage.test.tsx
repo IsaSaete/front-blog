@@ -1,6 +1,6 @@
 import { MemoryRouter, Route, Routes } from "react-router";
-import Layout from "../../../components/Layout/Layout";
 import { render, screen } from "@testing-library/react";
+import Layout from "../../../components/Layout/Layout";
 import PostsContextProvider from "../../context/PostsContextProvider";
 import PostDetailPage from "./PostDetailPage";
 import { huevosRotosBruc159PostDto } from "../../dto/fixturesDto";

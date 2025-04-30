@@ -1,6 +1,7 @@
 import { http, HttpResponse } from "msw";
 import {
   archivoDeLasTormentasComidaPostsDto,
+  comidaRiojanaPostsDto,
   huevosRotosBruc159PostDto,
 } from "../dto/fixturesDto";
 import { PostDto } from "../dto/types";
@@ -12,7 +13,17 @@ if (!apiUrl) {
 }
 
 export const handlers = [
-  http.get(`${apiUrl}/posts`, () => {
+  http.get(`${apiUrl}/posts`, ({ request }) => {
+    const url = new URL(request.url);
+    const currentPage = url.searchParams.get("page");
+
+    if (currentPage === "2") {
+      return HttpResponse.json<{ posts: PostDto[]; postsTotal: number }>({
+        posts: comidaRiojanaPostsDto,
+        postsTotal: comidaRiojanaPostsDto.length,
+      });
+    }
+
     return HttpResponse.json<{ posts: PostDto[]; postsTotal: number }>({
       posts: archivoDeLasTormentasComidaPostsDto,
       postsTotal: archivoDeLasTormentasComidaPostsDto.length,

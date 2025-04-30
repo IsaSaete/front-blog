@@ -6,67 +6,72 @@ import PostsContextProvider from "../../post/context/PostsContextProvider";
 import PostsPage from "../../post/pages/PostsPage/PostsPage";
 
 describe("Given the Layout component", () => {
-  describe("When it renders in page 1", () => {
-    test("Then it should show 'Aliset comiendo por el mundo' inside a level 1 heading", () => {});
-    render(
-      <MemoryRouter>
-        <Layout />
-      </MemoryRouter>,
-    );
+  describe("When it renders", () => {
+    test("Then it should show 'Aliset comiendo por el mundo' inside a level 1 heading", () => {
+      render(
+        <MemoryRouter>
+          <Layout />
+        </MemoryRouter>,
+      );
 
-    const appTitle = screen.getByRole("heading", {
-      name: /aliset comiendo por el mundo/i,
-      level: 1,
+      const appTitle = screen.getByRole("heading", {
+        name: /aliset comiendo por el mundo/i,
+        level: 1,
+      });
+
+      expect(appTitle).toBeVisible();
     });
-
-    expect(appTitle).toBeVisible();
   });
 
-  describe("And the user clicks on the link '>' / 'Página siguiente'", () => {
-    test("Then it should show a 2 as the current page", async () => {
+  describe("When it renders in path /posts?page=1 and the user clicks on the link '>' / 'Página siguiente'", () => {
+    test("Then it should show a 'Pimientos del piquillo rellenos: sabor y ternura 🌶️🫓' inside a heading", async () => {
       render(
         <PostsContextProvider>
-          <MemoryRouter initialEntries={["/posts/1"]}>
+          <MemoryRouter initialEntries={["/posts?page="]}>
             <Layout />
             <Routes>
-              <Route path="/posts/:page" element={<PostsPage />} />
+              <Route path="/posts" element={<PostsPage />} />
             </Routes>
           </MemoryRouter>
         </PostsContextProvider>,
       );
 
-      const nextPage = screen.getByLabelText(/página siguiente/i);
+      const nextPage = screen.getByRole("link", { name: /página siguiente/i });
 
       await userEvent.click(nextPage);
 
-      const currentPage = screen.getByText("2");
+      const postTitle = await screen.findByRole("heading", {
+        name: /pimientos del piquillo rellenos: sabor y ternura 🌶️🫓/i,
+      });
 
-      expect(currentPage).toBeVisible();
+      expect(postTitle).toBeVisible();
     });
   });
 
-  describe("When it renders in page 2", () => {
-    describe("And the user clicks on the link '>' / 'Página anterior'", () => {
-      test("Then it should show a 1 as the current page", async () => {
-        render(
-          <PostsContextProvider>
-            <MemoryRouter initialEntries={["/posts/2"]}>
-              <Layout />
-              <Routes>
-                <Route path="/posts/:page" element={<PostsPage />} />
-              </Routes>
-            </MemoryRouter>
-          </PostsContextProvider>,
-        );
+  describe("When it render in path /posts?page=2 and the user clicks on the link '<' / 'Página anterior'", () => {
+    test("Then it should show a 'Chuletillas al sarmiento: esencia de La Rioja 🔥🍖' inside a heading", async () => {
+      render(
+        <PostsContextProvider>
+          <MemoryRouter initialEntries={["/posts?page=2"]}>
+            <Layout />
+            <Routes>
+              <Route path="/posts" element={<PostsPage />} />
+            </Routes>
+          </MemoryRouter>
+        </PostsContextProvider>,
+      );
 
-        const nextPage = screen.getByLabelText(/página anterior/i);
-
-        await userEvent.click(nextPage);
-
-        const currentPage = screen.getByText("1");
-
-        expect(currentPage).toBeVisible();
+      const previousPage = screen.getByRole("link", {
+        name: /página anterior/i,
       });
+
+      await userEvent.click(previousPage);
+
+      const postTitle = screen.getByRole("heading", {
+        name: /chuletillas al sarmiento: esencia de La Rioja 🔥🍖/i,
+      });
+
+      expect(postTitle).toBeVisible();
     });
   });
 });
