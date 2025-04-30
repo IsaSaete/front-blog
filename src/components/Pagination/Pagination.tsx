@@ -1,4 +1,4 @@
-import { NavLink } from "react-router";
+import { Link } from "react-router";
 import "./Pagination.css";
 
 interface PaginationProps {
@@ -17,21 +17,21 @@ const Pagination: React.FC<PaginationProps> = ({ postsTotal, currentPage }) => {
 
   return (
     <nav className="paginator">
-      <NavLink
+      <Link
         className={`paginator__link ${firstPageClass}`}
-        to={`/posts/${previousPage}`}
+        to={`/posts?page=${previousPage}`}
         aria-label="Página anterior"
       >
         {"<"}
-      </NavLink>
+      </Link>
       <span className="pagintator__current-page">{currentPage}</span>
-      <NavLink
+      <Link
         className={`paginator__link ${lastPageClass}`}
-        to={`/posts/${nextPage}`}
+        to={`/posts?page=${nextPage}`}
         aria-label="Página siguiente"
       >
         {">"}
-      </NavLink>
+      </Link>
     </nav>
   );
 };

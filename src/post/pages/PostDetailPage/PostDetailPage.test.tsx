@@ -1,9 +1,9 @@
-import { MemoryRouter, Route, Routes } from "react-router";
-import Layout from "../../../components/Layout/Layout";
+import { MemoryRouter } from "react-router";
 import { render, screen } from "@testing-library/react";
+import Layout from "../../../components/Layout/Layout";
 import PostsContextProvider from "../../context/PostsContextProvider";
-import PostDetailPage from "./PostDetailPage";
 import { huevosRotosBruc159PostDto } from "../../dto/fixturesDto";
+import AppRouter from "../../../router/AppRouter";
 
 describe("Given the PostDetailPage component", () => {
   describe("When it receives 159678901234567890123456 id", () => {
@@ -11,10 +11,7 @@ describe("Given the PostDetailPage component", () => {
       render(
         <PostsContextProvider>
           <MemoryRouter initialEntries={["/post/159678901234567890123456"]}>
-            <Layout />
-            <Routes>
-              <Route path="post/:id" element={<PostDetailPage />} />
-            </Routes>
+            <AppRouter />
           </MemoryRouter>
         </PostsContextProvider>,
       );
@@ -31,9 +28,7 @@ describe("Given the PostDetailPage component", () => {
         <PostsContextProvider>
           <MemoryRouter initialEntries={["/post/159678901234567890123456"]}>
             <Layout />
-            <Routes>
-              <Route path="post/:id" element={<PostDetailPage />} />
-            </Routes>
+            <AppRouter />
           </MemoryRouter>
         </PostsContextProvider>,
       );
