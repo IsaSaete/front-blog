@@ -4,6 +4,7 @@ import userEvent from "@testing-library/user-event";
 import Layout from "./Layout";
 import PostsContextProvider from "../../post/context/PostsContextProvider";
 import PostsPage from "../../post/pages/PostsPage/PostsPage";
+import AppRouter from "../../router/AppRouter";
 
 describe("Given the Layout component", () => {
   describe("When it renders", () => {
@@ -29,9 +30,7 @@ describe("Given the Layout component", () => {
         <PostsContextProvider>
           <MemoryRouter initialEntries={["/posts?page="]}>
             <Layout />
-            <Routes>
-              <Route path="/posts" element={<PostsPage />} />
-            </Routes>
+            <AppRouter />
           </MemoryRouter>
         </PostsContextProvider>,
       );
