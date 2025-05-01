@@ -5,7 +5,7 @@ import { mapPostDtoToPost } from "../../dto/mappers";
 
 describe("Given the deletePost function", () => {
   describe("When it's called with 159678901234567890123456 id post", () => {
-    test("Then it should show a postData without the post with id", async () => {
+    test("Then it should show the rest of the posts without the post with id", async () => {
       const { result } = renderHook(() => usePosts());
 
       const deletePost = mapPostDtoToPost(huevosRotosBruc159PostDto);

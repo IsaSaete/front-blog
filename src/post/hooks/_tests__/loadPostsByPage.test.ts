@@ -3,7 +3,7 @@ import usePosts from "../usePosts";
 
 describe("Given the loadPostsByPage function", () => {
   describe("When it's called with page number 2", () => {
-    test("Then it should set the 'Peras al vino tinto', 'Menestra a la riojana' y 'Pimientos del piquillo rellenos' as postData", async () => {
+    test("Then it should show the 'Peras al vino tinto', 'Menestra a la riojana' y 'Pimientos del piquillo rellenos'", async () => {
       const { result } = renderHook(() => usePosts());
 
       await act(async () => {
