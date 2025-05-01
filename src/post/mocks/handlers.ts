@@ -36,13 +36,13 @@ export const handlers = [
     });
   }),
 
-  http.delete(`${apiUrl}/posts/159678901234567890123456`, () => {
+  http.post(`${apiUrl}/posts`, () => {
     return HttpResponse.json<{ post: PostDto }>({
       post: huevosRotosBruc159PostDto,
     });
   }),
 
-  http.post(`${apiUrl}/posts`, () => {
+  http.delete(`${apiUrl}/posts/159678901234567890123456`, () => {
     return HttpResponse.json<{ post: PostDto }>({
       post: huevosRotosBruc159PostDto,
     });
