@@ -11,9 +11,9 @@ describe("Given the deletePost method to PostClient", () => {
         huevosRotosBruc159PostDto._id,
       );
 
-      const postHuevos = mapPostDtoToPost(huevosRotosBruc159PostDto);
+      const huevosPost = mapPostDtoToPost(huevosRotosBruc159PostDto);
 
-      expect(deletedPost).toStrictEqual(postHuevos);
+      expect(deletedPost).toStrictEqual(huevosPost);
     });
   });
 });

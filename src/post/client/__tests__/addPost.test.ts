@@ -10,9 +10,9 @@ describe("Given the addPost method to PostClient", () => {
 
       const newPost = await postClient.addPost(huevosRotosBruc159PostData);
 
-      const postHuevos = mapPostDtoToPost(huevosRotosBruc159PostDto);
+      const huevosPost = mapPostDtoToPost(huevosRotosBruc159PostDto);
 
-      expect(newPost).toStrictEqual(postHuevos);
+      expect(newPost).toStrictEqual(huevosPost);
     });
   });
 });
