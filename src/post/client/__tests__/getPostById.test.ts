@@ -9,9 +9,9 @@ describe("Given the getPostById method to PostClient", () => {
 
       const post = await postClient.getPostById(huevosRotosBruc159PostDto._id);
 
-      const postHuevos = mapPostDtoToPost(huevosRotosBruc159PostDto);
+      const huevosPost = mapPostDtoToPost(huevosRotosBruc159PostDto);
 
-      expect(post).toStrictEqual(postHuevos);
+      expect(post).toStrictEqual(huevosPost);
     });
   });
 });
