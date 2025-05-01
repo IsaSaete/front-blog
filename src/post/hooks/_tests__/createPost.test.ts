@@ -7,9 +7,9 @@ describe("Given the createPost function", () => {
     test("Then it should show Huevos Rotos de Bruc, 159 added in postsData", async () => {
       const { result } = renderHook(() => usePosts());
 
-      await act(() => {
-        result.current.loadPostsByPage(2);
-        result.current.createPost(huevosRotosBruc159PostData);
+      await act(async () => {
+        await result.current.loadPostsByPage(2);
+        await result.current.createPost(huevosRotosBruc159PostData);
       });
 
       const posts = result.current.posts;
