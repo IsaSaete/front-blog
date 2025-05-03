@@ -1,7 +1,7 @@
 import { PostDto } from "./types";
 
 export const choutaKaladinPostDto: PostDto = {
-  _id: "14",
+  _id: "abcdefabcdef123456789012",
   author: "Cocinero de Sadeas (de incógnito)",
   content:
     "En las llanuras quebradas de Roshar, entre tormentas eternas y guerras interminables, los portadores de puentes encuentran consuelo en algo simple pero profundamente satisfactorio: el chouta. Este plato, parecido a un kebab moderno, es una mezcla de carne marinada en especias picantes, asada hasta quedar crujiente por fuera y jugosa por dentro. Se sirve envuelta en un pan plano y es acompañada por una salsa rojiza, de sabor intenso y ligeramente picante, que deja una impresión duradera en el paladar. Aunque en Alethkar puede encontrarse en puestos callejeros, el chouta ha trascendido su origen humilde. Hoy te traigo una receta adaptada para que lo prepares en casa sin necesitar esquirlas de tormenta ni la bendición de un alto príncipe. Ideal para una noche temática de Stormlight, una reunión con amigos fanáticos de Sanderson o simplemente cuando necesitas una dosis de sabor con un toque épico. Recuerda: si puedes comerlo sin ensuciarte las manos, no es un verdadero chouta. Prepárate para saborear el alimento de los héroes silenciosos. Después de todo, incluso Kaladin necesita algo más que honor para seguir adelante: necesita energía… y chouta.",
