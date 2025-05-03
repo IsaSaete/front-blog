@@ -5,6 +5,7 @@ import {
   chuletillasSarmientoPostDto,
   comidaRiojanaPostsDto,
   huevosRotosBruc159PostDto,
+  pimientosPiquilloPostDto,
 } from "../dto/fixturesDto";
 import { PostDto } from "../dto/types";
 
@@ -41,6 +42,12 @@ export const handlers = [
   http.get(`${apiUrl}/posts/159678901234567890123456`, () => {
     return HttpResponse.json<{ post: PostDto }>({
       post: huevosRotosBruc159PostDto,
+    });
+  }),
+
+  http.get(`${apiUrl}/posts/123451234567890678901234`, () => {
+    return HttpResponse.json<{ post: PostDto }>({
+      post: pimientosPiquilloPostDto,
     });
   }),
 

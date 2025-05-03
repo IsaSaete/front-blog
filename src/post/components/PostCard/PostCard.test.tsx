@@ -60,5 +60,18 @@ describe("Given the PostCard component", () => {
 
       expect(deleteButton).toBeVisible();
     });
+
+    test("Then it should show a 'INFO' link", () => {
+      render(
+        <PostsContextProvider>
+          <PostCard post={choutaKaladinPost} index={1} />
+        </PostsContextProvider>,
+        { wrapper: MemoryRouter },
+      );
+
+      const infoLink = screen.getByRole("link", { name: /info/i });
+
+      expect(infoLink).toBeInTheDocument();
+    });
   });
 });
