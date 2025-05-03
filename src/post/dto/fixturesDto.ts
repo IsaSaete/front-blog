@@ -78,7 +78,7 @@ export const chuletillasSarmientoPostDto: PostDto = {
 };
 
 export const pimientosPiquilloPostDto: PostDto = {
-  _id: "20",
+  _id: "123451234567890678901234",
   author: "Cocinera de Calahorra",
   content:
     "Delicados, dulces y con un leve toque ahumado, los pimientos del piquillo rellenos son un clásico riojano. Se rellenan con carne picada, bacalao o bechamel suave, y se hornean hasta fundirse en un abrazo cremoso. Perfectos como entrante o plato principal, son símbolo de mimo y tradición.",

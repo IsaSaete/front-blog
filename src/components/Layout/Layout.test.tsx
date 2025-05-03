@@ -1,10 +1,10 @@
 import { render, screen } from "@testing-library/react";
-import { MemoryRouter, Route, Routes } from "react-router";
+import { MemoryRouter } from "react-router";
 import userEvent from "@testing-library/user-event";
 import Layout from "./Layout";
 import PostsContextProvider from "../../post/context/PostsContextProvider";
-import PostsPage from "../../post/pages/PostsPage/PostsPage";
-import AppRouter from "../../router/AppRouter";
+import { pimientosPiquilloPostDto } from "../../post/dto/fixturesDto";
+import AppTestRouter from "../../router/AppTestRouter";
 
 describe("Given the Layout component", () => {
   describe("When it renders", () => {
@@ -30,7 +30,7 @@ describe("Given the Layout component", () => {
         <PostsContextProvider>
           <MemoryRouter initialEntries={["/posts?page="]}>
             <Layout />
-            <AppRouter />
+            <AppTestRouter />
           </MemoryRouter>
         </PostsContextProvider>,
       );
@@ -53,9 +53,7 @@ describe("Given the Layout component", () => {
         <PostsContextProvider>
           <MemoryRouter initialEntries={["/posts?page=2"]}>
             <Layout />
-            <Routes>
-              <Route path="/posts" element={<PostsPage />} />
-            </Routes>
+            <AppTestRouter />
           </MemoryRouter>
         </PostsContextProvider>,
       );
@@ -71,6 +69,35 @@ describe("Given the Layout component", () => {
       });
 
       expect(postTitle).toBeVisible();
+    });
+  });
+
+  describe("When it render in path /posts?page=2 and the user clicks on the'INFO' link in the Pimientos del piquillo rellenos: sabor y ternura 🌶️🫓 post", () => {
+    test("Then it should show all the content of Pimientos del piquillo rellenos: sabor y ternura 🌶️🫓 post", async () => {
+      render(
+        <PostsContextProvider>
+          <MemoryRouter initialEntries={["/posts?page=2"]}>
+            <Layout />
+            <AppTestRouter />
+          </MemoryRouter>
+        </PostsContextProvider>,
+      );
+
+      const postTitle = await screen.findByRole("heading", {
+        name: /pimientos del piquillo rellenos: sabor y ternura 🌶️🫓/i,
+      });
+
+      expect(postTitle).toBeInTheDocument();
+
+      const infoLink = await screen.findAllByRole("link", { name: /info/i });
+
+      await userEvent.click(infoLink[0]);
+
+      const postContent = await screen.findByText(
+        pimientosPiquilloPostDto.content,
+      );
+
+      expect(postContent).toBeInTheDocument();
     });
   });
 });

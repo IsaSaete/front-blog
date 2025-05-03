@@ -1,5 +1,5 @@
 import React from "react";
-import { useNavigate } from "react-router";
+import { Link } from "react-router";
 import { Post } from "../../types";
 import "./PostCard.css";
 import Button from "../../../components/Button/Button";
@@ -26,11 +26,6 @@ const PostCard: React.FC<PostCardProps> = ({
 }) => {
   const { deletePost } = usePostsContext();
 
-  const navigate = useNavigate();
-  const getPostDetail = (postId: string): void => {
-    navigate(`/post/${postId}`);
-  };
-
   const loadingType = index <= 2 ? "eager" : "lazy";
 
   return (
@@ -48,14 +43,11 @@ const PostCard: React.FC<PostCardProps> = ({
         action={() => deletePost(id)}
         text="X"
         classModifierName="delete"
-        aria-label="eliminar post"
+        aria-label="Eliminar post"
       />
-      <Button
-        action={() => getPostDetail(id)}
-        text="+ info"
-        classModifierName="navigate"
-        aria-label="detalles del post"
-      />
+      <Link to={`/post/${id}`} className="post__info-link">
+        info
+      </Link>
       <div className="post__info">
         <h3 className="post__headline">
           <span className="post__title">{title}</span>
@@ -65,8 +57,8 @@ const PostCard: React.FC<PostCardProps> = ({
         <div className="post__info-bottom">
           <ul className="post__tags">
             {previewTags.map((tag) => (
-              <li key={tag}>
-                <span className="post__tag">#{tag}</span>
+              <li className="post__tag" key={tag}>
+                #{tag}
               </li>
             ))}
           </ul>
