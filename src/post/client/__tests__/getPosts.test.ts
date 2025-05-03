@@ -31,7 +31,9 @@ describe("Given the getPosts method of PostClient", () => {
   });
 
   describe("When it's called and response is not ok", () => {
-    test("Then it should throw 'Error fetching posts'", () => {
+    test("Then it should throw an error with message 'Error fetching posts'", () => {
+      const expectedErrorMessage = "Error fetching posts";
+
       const apiUrl = import.meta.env.VITE_API_URL;
 
       server.use(
@@ -44,7 +46,7 @@ describe("Given the getPosts method of PostClient", () => {
 
       const posts = postClient.getPosts();
 
-      expect(posts).rejects.toThrow("Error fetching posts");
+      expect(posts).rejects.toThrow(expectedErrorMessage);
     });
   });
 });
