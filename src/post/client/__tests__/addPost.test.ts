@@ -19,7 +19,9 @@ describe("Given the addPost method to PostClient", () => {
   });
 
   describe("When the it's called and response is not ok", () => {
-    test("Then it should throw 'Error adding new post'", () => {
+    test("Then it should throw an error with message 'Error adding new post'", () => {
+      const expectedErrorMessage = "Error adding new post";
+
       const apiUrl = import.meta.env.VITE_API_URL;
 
       server.use(
@@ -32,7 +34,7 @@ describe("Given the addPost method to PostClient", () => {
 
       const newPost = postClient.addPost(huevosRotosBruc159PostData);
 
-      expect(newPost).rejects.toThrow("Error adding new post");
+      expect(newPost).rejects.toThrow(expectedErrorMessage);
     });
   });
 });
