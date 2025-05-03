@@ -1,6 +1,8 @@
+import { http, HttpResponse } from "msw";
 import { huevosRotosBruc159PostDto } from "../../dto/fixturesDto";
 import { mapPostDtoToPost } from "../../dto/mappers";
 import { huevosRotosBruc159PostData } from "../../fixtures";
+import { server } from "../../mocks/node";
 import PostClient from "../PostClient";
 
 describe("Given the addPost method to PostClient", () => {
@@ -13,6 +15,24 @@ describe("Given the addPost method to PostClient", () => {
       const huevosPost = mapPostDtoToPost(huevosRotosBruc159PostDto);
 
       expect(newPost).toStrictEqual(huevosPost);
+    });
+  });
+
+  describe("When the it's called and response is not ok", () => {
+    test("Then it should throw 'Error adding new post'", () => {
+      const apiUrl = import.meta.env.VITE_API_URL;
+
+      server.use(
+        http.post(`${apiUrl}/posts`, () => {
+          return new HttpResponse(null, { status: 500 });
+        }),
+      );
+
+      const postClient = new PostClient();
+
+      const newPost = postClient.addPost(huevosRotosBruc159PostData);
+
+      expect(newPost).rejects.toThrow("Error adding new post");
     });
   });
 });
