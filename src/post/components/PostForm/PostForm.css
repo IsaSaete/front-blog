@@ -63,6 +63,16 @@
   }
 }
 
+.post-form__success {
+  text-align: center;
+  bottom: 20px;
+  padding: 5px 15px;
+  border-radius: 5px;
+  color: var(--secondary-color);
+  background-color: #0cd80c;
+  font-size: 1.8rem;
+}
+
 .post-form__button {
   padding: 8px 15px;
   align-self: flex-end;

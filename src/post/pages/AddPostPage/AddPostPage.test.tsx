@@ -1,7 +1,7 @@
 import { render, screen } from "@testing-library/react";
+import { MemoryRouter } from "react-router";
 import AddPostPage from "./AddPostPage";
 import PostsContextProvider from "../../context/PostsContextProvider";
-import { MemoryRouter } from "react-router";
 
 describe("Given the AddPostPage component", () => {
   describe("When it renders", () => {
