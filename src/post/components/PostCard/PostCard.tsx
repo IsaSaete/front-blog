@@ -26,13 +26,14 @@ const PostCard: React.FC<PostCardProps> = ({
 }) => {
   const { deletePost } = usePostsContext();
 
-  const loadingType = index <= 2 ? "eager" : "lazy";
+  const loadingType = index <= 1 ? "eager" : "lazy";
 
   return (
     <article className="post">
       <img
-        srcSet={`${smallImageUrl} 300w, ${imageUrl}420w`}
-        sizes="(min-width: 490px and max-width: 500px) 420px, 300px"
+        src={smallImageUrl}
+        srcSet={`${smallImageUrl} 300w, ${imageUrl} 420w`}
+        sizes="(min-width: 490px) and (max-width: 500px) 420px, 300px"
         alt={imageAlt}
         className="post__image"
         width={300}
