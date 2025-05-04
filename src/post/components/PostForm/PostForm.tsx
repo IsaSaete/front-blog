@@ -40,18 +40,20 @@ const PostForm: React.FC<PostFormProps> = ({ action }) => {
     postData.imageUrl !== "";
 
   const navigate = useNavigate();
-  const [errorMessage, setErrorMessage] = useState<string>("");
+  const [errorMessage, setErrorMessage] = useState("");
+  const [successMessage, setSuccessMessage] = useState("");
 
   const onSubmitForm = async (
     event: React.FormEvent<HTMLFormElement>,
   ): Promise<void> => {
     event.preventDefault();
-    setErrorMessage("");
 
     try {
       await action(postData);
 
-      navigate("/");
+      setSuccessMessage("Post creado con éxito");
+
+      setTimeout(() => navigate("/"), 3000);
     } catch {
       setErrorMessage("¡Error al crear el post!");
     }
@@ -153,7 +155,16 @@ const PostForm: React.FC<PostFormProps> = ({ action }) => {
           />
         </div>
       </div>
-      {errorMessage && <span className="post-form__error">{errorMessage}</span>}
+      {successMessage && (
+        <span role="status" className="post-form__success">
+          {successMessage}
+        </span>
+      )}
+      {errorMessage && (
+        <span role="alert" className="post-form__error">
+          {errorMessage}
+        </span>
+      )}
       <button
         className="post-form__button"
         type="submit"
