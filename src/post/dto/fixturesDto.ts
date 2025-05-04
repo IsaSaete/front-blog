@@ -122,6 +122,7 @@ export const archivoDeLasTormentasComidaPostsDto = [
   patatasRiojanaPostDto,
   bacalaoRiojanaPostDto,
   chuletillasSarmientoPostDto,
+  huevosRotosBruc159PostDto,
 ];
 
 export const comidaRiojanaPostsDto = [
