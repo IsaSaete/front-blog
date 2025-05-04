@@ -53,7 +53,7 @@ const PostForm: React.FC<PostFormProps> = ({ action }) => {
 
       navigate("/");
     } catch {
-      setErrorMessage("Error: El post ya existe!");
+      setErrorMessage("¡Error al crear el post!");
     }
   };
 
